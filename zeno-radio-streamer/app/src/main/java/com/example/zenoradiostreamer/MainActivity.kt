@@ -1,31 +1,39 @@
 package com.example.zenoradiostreamer
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.Button
-import android.widget.Toast
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var playButton: Button
-    private lateinit var stopButton: Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        playButton = findViewById(R.id.play_button)
-        stopButton = findViewById(R.id.stop_button)
+        val mainIframeWebView = findViewById<WebView>(R.id.main_iframe_webview)
+        mainIframeWebView.settings.javaScriptEnabled = true
+        mainIframeWebView.settings.domStorageEnabled = true
+        mainIframeWebView.webViewClient = WebViewClient()
+        mainIframeWebView.loadUrl("https://zeno.fm/player/b-trammell-radio")
 
-        playButton.setOnClickListener {
-            startService(Intent(this, RadioPlayerService::class.java))
-            Toast.makeText(this, "Streaming started", Toast.LENGTH_SHORT).show()
+        val webView = findViewById<WebView>(R.id.webview)
+        val btnWebView = findViewById<Button>(R.id.btn_webview)
+        val btnNative = findViewById<Button>(R.id.btn_native)
+
+        btnWebView.setOnClickListener {
+            webView.visibility = WebView.VISIBLE
+            webView.settings.javaScriptEnabled = true
+            webView.settings.domStorageEnabled = true
+            webView.webViewClient = WebViewClient()
+            webView.loadUrl("https://listen.zeno.fm/player/app-ffjtjj")
         }
 
-        stopButton.setOnClickListener {
-            stopService(Intent(this, RadioPlayerService::class.java))
-            Toast.makeText(this, "Streaming stopped", Toast.LENGTH_SHORT).show()
+        btnNative.setOnClickListener {
+            webView.visibility = WebView.GONE
+            val intent = Intent(this, RadioPlayerService::class.java)
+            startService(intent)
         }
     }
 }

@@ -7,7 +7,7 @@ import android.util.Log
 class RadioPlayerService : Service() {
 
     private var mediaPlayer: MediaPlayer? = null
-    private val radioUrl = "https://your-zeno.fm-stream-url" // Replace with your Zeno.fm stream URL
+    private val radioUrl = "https://stream.zeno.fm/zaikbjabuzdvv" // Direct Zeno.fm stream URL
 
     override fun onCreate() {
         super.onCreate()
