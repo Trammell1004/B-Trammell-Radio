@@ -1,0 +1,8 @@
+<strings>
+    <string name="app_name">Zeno Radio Streamer</string>
+    <string name="play_button">Play</string>
+    <string name="pause_button">Pause</string>
+    <string name="stop_button">Stop</string>
+    <string name="streaming_error">Error streaming the radio station. Please try again.</string>
+    <string name="streaming_success">Streaming started successfully!</string>
+</strings>
