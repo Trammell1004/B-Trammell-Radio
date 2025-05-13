@@ -21,9 +21,11 @@ To get a local copy up and running, follow these steps:
 ### Installation
 
 1. Clone the repository:
-   ```
+
+   ```bash
    git clone https://github.com/yourusername/zeno-radio-streamer.git
    ```
+
 2. Open the project in Android Studio.
 3. Sync the project with Gradle files.
 4. Run the application on an Android device or emulator.
